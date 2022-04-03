@@ -99,6 +99,7 @@
     // If yes, remove the eaten thing and reset increment,
 
 
+// Improved solution
     const eats = {
         'antelope' : ['grass'],
         'big-fish' : ['little-fish'],
@@ -117,7 +118,34 @@
     function checkIfEats(eater, eaten) {    
         return (eater in eats) && eats[eater].includes(eaten)
     }
+    
 
+    function checkAndRemove(zoo, eater, eaten) {
+        if(checkIfEats(zoo[eater], zoo[eaten])) {
+            result.push(`${zoo[eater]} eats ${zoo[eaten]}`)
+            zoo.splice(eaten, 1);
+            return true
+        }
+        return false
+    }
+
+    
+    var whoEatsWho = function(zoo) {
+        result = [zoo]
+        zoo = zoo.split(',')
+        let i = -1;
+        while (i < zoo.length) {
+            i++
+            if (checkAndRemove(zoo, i, i-1) || checkAndRemove(zoo, i, i+1)) {
+                i = -1;
+            }
+        }
+        result.push(zoo.join(','))
+        return result
+    }
+
+    
+//initial solution (not dry)
 
 var whoEatsWho = function(zoo) {
     result = [zoo]
