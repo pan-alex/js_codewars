@@ -37,6 +37,27 @@ hypertensive([
         // If any of these conditions are true, increase counter.
 
 
+// Improved solution
+function hypertensive(patients) {
+    return patients.reduce( (nHypertensive, patient) => nHypertensive += checkPatient(patient), 0)
+}
+
+
+function checkPatient(patient) {
+    sumSys = 0
+    sumDia = 0
+    for (i in patient) {
+        [sys, dia] = patient[i].split('/')
+        if (sys >= 180 && dia >= 110) return true
+        sumSys += +sys
+        sumDia += +dia
+    }
+    n = patient.length
+    return (sumSys / n >= 140 || sumDia / n >= 90) && n >= 2
+    
+}
+
+
 // Original solution
 function hypertensive(patients) {
     let nHypertensive = 0;
