@@ -18,8 +18,19 @@ function findOdd(A) {
             nums[num] = 1
         }
     })
-    
+
     for (key in nums) {
         if (!(nums[key] % 2 === 0)) return Number(key)
     }
   }
+
+
+
+function findOdd(A) {
+nums = {}
+A.forEach( num => {nums[num] ? nums[num]++ : nums[num] = 1})
+
+for (key in nums) {
+    if (!(nums[key] % 2 === 0)) return Number(key)
+}
+}
