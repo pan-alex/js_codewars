@@ -32,3 +32,8 @@ function findChildren(dancingBrigade) {
 	return alphabeticalAndUpper.join('');
 }
 
+
+function findChildren(dancingBrigade) {
+    alphabetical = dancingBrigade.split('').sort( (a, b) => a.localeCompare(b, 'en', {caseFirst:'upper'}))
+	return alphabetical.join('');
+}
