@@ -17,36 +17,36 @@
 
 function Jar() {
     this.concentrations = {}
-    let totalAmount = 0;
+    this.totalAmount = 0;
 
     Jar.prototype.add = function(amount, type) {
         if (!type) return undefined
-        totalAmount += amount
+        this.totalAmount += amount
         if(!(this.concentrations[type])) this.concentrations[type] = 0
         this.concentrations[type] += amount
     };
 
     Jar.prototype.pourOut = function(amount) {
-        percentChange = (totalAmount - amount) / totalAmount
-        totalAmount -= amount
+        percentChange = (this.totalAmount - amount) / this.totalAmount
+        this.totalAmount -= amount
         for (type in this.concentrations) {
             this.concentrations[type] *= percentChange
         }
     };
 
     Jar.prototype.getTotalAmount = function() {
-        return totalAmount
+        return this.totalAmount
     };
 
     Jar.prototype.getConcentration = function(type) {
-        return this.concentrations[type] ? this.concentrations[type] / totalAmount : 0
+        return this.concentrations[type] ? this.concentrations[type] / this.totalAmount : 0
     }
 }
 
 jar = new Jar();
 jar.getConcentration('apple')
 jar.add(200, 'apple')
-jar.getTotalAmount()
+jar.this.getTotalAmount()
 jar.getConcentration('apple')
 jar.add(200, 'banana')
 jar.getConcentration('apple')
