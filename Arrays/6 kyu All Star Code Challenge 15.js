@@ -31,7 +31,7 @@ rotate("Hello") // => ["elloH", "lloHe", "loHel", "oHell", "Hello"]
                 // slice(i-1) + slice(0, i)
                 // Push rotated word to array.
 
-    // recursion:
+    // repeat function call:
         // While array length is less than str length:
             // Call rotate_once():
                 // slice(1) + slice(0, 1)
@@ -54,7 +54,7 @@ function rotate(str) {
     return str.split('').map( (_, i) => str.slice(i+1) + str.slice(0, i+1))
 }
 
-// recursive
+
 function rotate_once(str) {
     return (str.slice(1) + str.slice(0, 1))
 }
